@@ -1,6 +1,6 @@
 <?php
 
-namespace  NikKanetiya\LaravelColorPalette;
+namespace NikKanetiya\LaravelColorPalette;
 
 use ColorThief\ColorThief;
 
