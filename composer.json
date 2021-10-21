@@ -12,11 +12,17 @@
     ],
     "require": {
         "php": ">=5.6.4",
-        "ksubileau/color-thief-php": "^1.4",
+        "ksubileau/color-thief-php": "dev-master",
         "illuminate/support": ">=5.5"
     },
     "require-dev": {
     },
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/kiritokatklian/color-thief-php/"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "NikKanetiya\\LaravelColorPalette\\": "src"
