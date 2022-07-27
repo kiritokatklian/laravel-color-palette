@@ -1,0 +1,56 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Method Kiritokatklian\\\\LaravelColorPalette\\\\Color\\:\\:__construct\\(\\) has parameter \\$color with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Color.php
+
+		-
+			message: "#^Method Kiritokatklian\\\\LaravelColorPalette\\\\Color\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Color.php
+
+		-
+			message: "#^Method Kiritokatklian\\\\LaravelColorPalette\\\\Color\\:\\:toRgb\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Color.php
+
+		-
+			message: "#^Method Kiritokatklian\\\\LaravelColorPalette\\\\Color\\:\\:toRgba\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Color.php
+
+		-
+			message: "#^Method Kiritokatklian\\\\LaravelColorPalette\\\\ColorPaletteClient\\:\\:getColor\\(\\) has parameter \\$area with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/ColorPaletteClient.php
+
+		-
+			message: "#^Method Kiritokatklian\\\\LaravelColorPalette\\\\ColorPaletteClient\\:\\:getPalette\\(\\) has parameter \\$area with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/ColorPaletteClient.php
+
+		-
+			message: "#^Method Kiritokatklian\\\\LaravelColorPalette\\\\ColorPaletteClient\\:\\:getPalette\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/ColorPaletteClient.php
+
+		-
+			message: "#^Method Kiritokatklian\\\\LaravelColorPalette\\\\ColorPaletteClient\\:\\:getPalette\\(\\) should return array but returns array\\|null\\.$#"
+			count: 1
+			path: src/ColorPaletteClient.php
+
+		-
+			message: "#^PHPDoc tag @return with type array\\[Kiritokatklian\\\\LaravelColorPalette\\\\Color\\] is not subtype of native type array\\.$#"
+			count: 1
+			path: src/ColorPaletteClient.php
+
+		-
+			message: "#^Parameter \\#1 \\$color of class Kiritokatklian\\\\LaravelColorPalette\\\\Color constructor expects array\\|int, ColorThief\\\\Color\\|ColorThief\\\\ColorRGB\\|int\\|string given\\.$#"
+			count: 1
+			path: src/ColorPaletteClient.php
+
+		-
+			message: "#^Parameter \\#1 \\$color of class Kiritokatklian\\\\LaravelColorPalette\\\\Color constructor expects array\\|int, ColorThief\\\\Color\\|ColorThief\\\\ColorRGB\\|int\\|string\\|null given\\.$#"
+			count: 1
+			path: src/ColorPaletteClient.php

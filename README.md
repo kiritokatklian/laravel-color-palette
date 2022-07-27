@@ -3,18 +3,20 @@ Laravel Wrapper for [Color-Thief-PHP](https://github.com/ksubileau/color-thief-p
 
 This Laravel package is extremely useful to grab **dominant color** or a **representative color palette** from images. See this image for the example.
 
-![example image](https://rawcdn.githack.com/nikkanetiya/laravel-color-palette/master/tests/images/example.png)
+![example image](https://rawcdn.githack.com/kiritokatklian/laravel-color-palette/master/tests/images/example.png)
 
 ## Contents
 
 - [Installation](#installation)
 - [Available Methods](#available-methods)
-	
+- [Test](#test)
+- [License](#license)
+
 ## Installation
 
 You can install the package via [Composer](http://getcomposer.org):
 ```bash
-composer require nikkanetiya/laravel-color-palette
+$ composer require kiritokatklian/laravel-color-palette
 ```
 
 You must install the service provider (For Laravel < 5.5):
@@ -23,7 +25,7 @@ You must install the service provider (For Laravel < 5.5):
 // config/app.php
 'providers' => [
     ...
-    NikKanetiya\LaravelColorPalette\ColorPaletteServiceProvider::class,
+    Kiritokatklian\LaravelColorPalette\ColorPaletteServiceProvider::class,
 ],
 ```
 
@@ -33,7 +35,7 @@ Register facade:
 // config/app.php
 'aliases' => [
     ...
-    'ColorPalette' => NikKanetiya\LaravelColorPalette\ColorPaletteFacade::class,
+    'ColorPalette' => Kiritokatklian\LaravelColorPalette\ColorPaletteFacade::class,
 ],
 ```
 
@@ -45,16 +47,15 @@ Register facade:
 
     ``` php
     // get most dominant color from image
-
-    $color = ColorPalette::getColor( 'https://rawcdn.githack.com/nikkanetiya/laravel-color-palette/master/tests/images/strawberry.jpeg' );
+    $color = ColorPalette::getColor( 'https://rawcdn.githack.com/kiritokatklian/laravel-color-palette/master/tests/images/strawberry.jpeg' );
 
     // Color provides several getters/properties
     echo $color;             // '#dc5550'
     echo $color->rgbString;  // 'rgb(220,85,80)'
     echo $color->rgbaString; // 'rgba(220,85,80,1)'
     echo $color->int;        // 14439760
-    print_r($color->rgb);        // array(220, 85, 80) 
-    print_r($color->rgba);       // array(220, 85, 80, 1)
+    print_r($color->rgb);    // array(220, 85, 80) 
+    print_r($color->rgba);   // array(220, 85, 80, 1)
     ```
 
     #### Options
@@ -77,7 +78,7 @@ Register facade:
     ``` php
     // get colors from image
     
-    $colors = ColorPalette::getPalette( 'https://github.com/nikkanetiya/laravel-color-palette/blob/master/tests/images/strawberry.jpeg' );
+    $colors = ColorPalette::getPalette( 'https://github.com/kiritokatklian/laravel-color-palette/blob/master/tests/images/strawberry.jpeg' );
     
     foreach($colors as $color) {
         //
@@ -92,5 +93,23 @@ Register facade:
      - `colorCount` can be 2 to 256. It is the number of colors you want to retrieve for the image.
      - `Quality` & `Area` is same as above.
 
+## Test
+
+You can run the tests with:
+
+```bash
+$ composer run test
+```
+
+## Credits
+
+- [All Contributors](../../contributors)
+
+A big thank you to [Nikunj Kanetiya](https://github.com/nikkanetiya) for creating the first version of this package.
+
 Image Source: `https://www.pexels.com`, `google image`
+
+## License
+
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 

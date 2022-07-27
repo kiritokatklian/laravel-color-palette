@@ -1,12 +1,13 @@
 <?php
 
-namespace NikKanetiya\LaravelColorPalette;
+namespace Kiritokatklian\LaravelColorPalette;
 
 use Illuminate\Support\ServiceProvider;
 
 /**
  * Class ColorPaletteClient
- * @package NikKanetiya\LaravelColorPalette
+ *
+ * @package LaravelColorPalette
  */
 class ColorPaletteServiceProvider extends ServiceProvider
 {
@@ -15,7 +16,7 @@ class ColorPaletteServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         //
     }
@@ -25,7 +26,7 @@ class ColorPaletteServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->app->bind('ColorPaletteClient', function ($app) {
             return new ColorPaletteClient();
