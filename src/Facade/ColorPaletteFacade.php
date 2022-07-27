@@ -1,12 +1,13 @@
 <?php
 
-namespace Nikkanetiya\LaravelColorPalette;
+namespace Kiritokatklian\LaravelColorPalette\Facade;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
  * Class ColorPaletteFacade
- * @package NikKanetiya\LaravelColorPalette
+ *
+ * @package LaravelColorPalette
  */
 class ColorPaletteFacade extends Facade
 {
@@ -15,7 +16,7 @@ class ColorPaletteFacade extends Facade
      *
      * @return string
      */
-    protected static function getFacadeAccessor()
+    protected static function getFacadeAccessor(): string
     {
         return 'ColorPaletteClient';
     }

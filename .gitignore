@@ -1,5 +1,10 @@
-/.idea
-/vendor
+.idea
+.run
 build
-composer.phar
+vendor
+tests/temp
 composer.lock
+.env
+.phpunit.result.cache
+.php-cs-fixer.cache
+phpstan.neon

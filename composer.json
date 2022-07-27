@@ -1,41 +1,69 @@
 {
-    "name": "nikkanetiya/laravel-color-palette",
+    "name": "kiritokatklian/laravel-color-palette",
     "description": "Laravel Wrapper for `ksubileau/color-thief-php`. Grabs the dominant color or a representative color palette from an image. Uses PHP and GD or Imagick.",
-    "homepage": "https://github.com/nikkanetiya/laravel-color-palette",
-    "keywords": ["laravel","color-palette","image-colors","color-thief","php", "gd"],
-    "minimum-stability": "dev",
+    "homepage": "https://github.com/kiritokatklian/laravel-color-palette",
+    "keywords": [
+        "kurozora",
+        "kiritokatklian",
+        "laravel",
+        "color-thief",
+        "color-palette",
+        "color-generator",
+        "image",
+        "image-colors",
+        "php",
+        "gd"
+    ],
     "authors": [
         {
-            "name": "Nikunj Kanetiya",
-            "email": "kanetiya@gmail.com"
+            "name": "Kiritokatklian",
+            "email": "fusible-band-0x@icloud.com",
+            "homepage": "https://kurozora.app",
+            "role": "Developer"
         }
     ],
     "require": {
-        "php": ">=5.6.4",
-        "ksubileau/color-thief-php": "dev-master",
-        "illuminate/support": ">=5.5"
+        "php": "^8.0.2",
+        "ksubileau/color-thief-php": "^v2.0",
+        "illuminate/support": "^9.18"
     },
     "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.9",
+        "nunomaduro/larastan": "^2.0",
+        "orchestra/testbench": "7.*",
+        "phpunit/phpunit": "9.*"
     },
-    "repositories": [
-        {
-            "type": "git",
-            "url": "https://github.com/kiritokatklian/color-thief-php/"
-        }
-    ],
     "autoload": {
         "psr-4": {
-            "NikKanetiya\\LaravelColorPalette\\": "src"
+            "Kiritokatklian\\LaravelColorPalette\\": "src"
         }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Kiritokatklian\\LaravelColorPalette\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "analyse": "vendor/bin/phpstan analyse",
+        "baseline": "vendor/bin/phpstan analyse --generate-baseline",
+        "format": "vendor/bin/php-cs-fixer fix --allow-risky=yes",
+        "test": "vendor/bin/phpunit"
     },
     "extra": {
         "laravel": {
             "providers": [
-                "NikKanetiya\\LaravelColorPalette\\ColorPaletteServiceProvider"
+                "Kiritokatklian\\LaravelColorPalette\\ColorPaletteServiceProvider"
             ],
             "aliases": {
-                "ColorPalette": "NikKanetiya\\LaravelColorPalette\\ColorPaletteFacade"
+                "ColorPalette": "Kiritokatklian\\LaravelColorPalette\\ColorPaletteFacade"
             }
         }
-    }
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
