@@ -55,7 +55,7 @@
                 "Kiritokatklian\\LaravelColorPalette\\ColorPaletteServiceProvider"
             ],
             "aliases": {
-                "ColorPalette": "Kiritokatklian\\LaravelColorPalette\\ColorPaletteFacade"
+                "ColorPalette": "Kiritokatklian\\LaravelColorPalette\\Facade\\ColorPaletteFacade"
             }
         }
     },
