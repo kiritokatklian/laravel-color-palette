@@ -14,57 +14,64 @@ class Color
     /**
      * The red value.
      *
-     * @var int
+     * @var int $r
      */
     public int $r;
 
     /**
      * The green value.
      *
-     * @var int
+     * @var int $g
      */
     public int $g;
 
     /**
      * The blue value.
      *
-     * @var int
+     * @var int $b
      */
     public int $b;
 
     /**
      * The alpha value.
      *
-     * @var int
+     * @var int $a
      */
     public int $a;
 
     /**
-     * Construct new Color
+     * Construct new Color.
      *
-     * @param int|array $color
-     * @param bool      $short
+     * @param \ColorThief\Color|int|int[]|string|null   $color
+     * @param bool                                      $short
      */
-    public function __construct(int|array $color = 0x000000, bool $short = false)
+    public function __construct(\ColorThief\Color|array|int|string|null $color = 0x000000, bool $short = false)
     {
-        if (is_numeric($color)) {
+        if (is_numeric($color) || is_string($color)) {
+            if (is_string($color)) {
+                $color = preg_replace('/[^\dA-Fa-f]/', '', $color);
+                $color = hexdec($color);
+            }
+
             if ($short) {
-                $this->r = (($color >> 8) & 0xf) * 0x11;
-                $this->g = (($color >> 4) & 0xf) * 0x11;
-                $this->b = ($color & 0xf) * 0x11;
-                $this->a = (($color >> 12) & 0xf) * 0x11;
+                $this->r = (($color >> 0x8) & 0xF) * 0x11;
+                $this->g = (($color >> 0x4) & 0xF) * 0x11;
+                $this->b = ($color & 0xF) * 0x11;
+                $this->a = (($color >> 0xC) & 0xF) * 0x11;
             } else {
-                $this->r = ($color >> 16) & 0xff;
-                $this->g = ($color >> 8) & 0xff;
-                $this->b = $color & 0xff;
-                $this->a = ($color >> 24) & 0xff;
+                $this->r = ($color >> 0x10) & 0xFF;
+                $this->g = ($color >> 0x8) & 0xFF;
+                $this->b = $color & 0xFF;
+                $this->a = ($color >> 0x18) & 0xFF;
             }
         } elseif (is_array($color)) {
             [$this->r, $this->g, $this->b] = $color;
-
-            if (count($color) > 3) {
-                $this->a = $color[3];
-            }
+            $this->a = count($color) > 3 ? $color[3] : 0;
+        } elseif ($color instanceof \ColorThief\Color) {
+            $this->r = $color->getRed();
+            $this->g = $color->getGreen();
+            $this->b = $color->getBlue();
+            $this->a = 0;
         }
     }
 
@@ -118,7 +125,7 @@ class Color
      */
     public function getDiff(int|Color $color): int
     {
-        if (! $color instanceof Color) {
+        if (!$color instanceof Color) {
             $color = new Color($color);
         }
 
@@ -152,7 +159,7 @@ class Color
     /**
      * Returns an array containing int values for red, green, blue and alpha.
      *
-     * @return array
+     * @return int[]
      */
     public function toArray(): array
     {
@@ -162,7 +169,7 @@ class Color
     /**
      * Returns an array containing int values for red, green and blue.
      *
-     * @return array
+     * @return int[]
      */
     public function toRgb(): array
     {
@@ -172,7 +179,7 @@ class Color
     /**
      * Returns an array containing int values for red, green and blue and a double for alpha.
      *
-     * @return array
+     * @return int[]
      */
     public function toRgba(): array
     {
@@ -187,7 +194,7 @@ class Color
      */
     public function toInt(): int
     {
-        return ($this->r << 16) | ($this->g << 8) | $this->b;
+        return ($this->r << 0x10) | ($this->g << 0x8) | $this->b;
     }
 
     /**
