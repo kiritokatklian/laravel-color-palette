@@ -1,4 +1,8 @@
 # Laravel Color Palette
+
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/kiritokatklian/laravel-color-palette.svg?style=flat-square)](https://packagist.org/packages/kiritokatklian/laravel-color-palette)
+[![Total Downloads](https://img.shields.io/packagist/dt/kiritokatklian/laravel-color-palette.svg?style=flat-square)](https://packagist.org/packages/kiritokatklian/laravel-color-palette)
+
 Laravel Wrapper for [Color-Thief-PHP](https://github.com/ksubileau/color-thief-php) with additional changes. Grabs the **dominant color** or a **representative color palette** from an image. Uses PHP and GD or Imagick.
 
 This Laravel package is extremely useful to grab **dominant color** or a **representative color palette** from images. See this image for the example.
