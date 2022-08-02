@@ -3,7 +3,7 @@
 namespace Kiritokatklian\LaravelColorPalette\Tests\Unit;
 
 use Kiritokatklian\LaravelColorPalette\Color;
-use Kiritokatklian\LaravelColorPalette\Facade\ColorPaletteFacade;
+use Kiritokatklian\LaravelColorPalette\Facades\ColorPalette;
 use Kiritokatklian\LaravelColorPalette\Tests\TestCase;
 
 final class ColorPaletteTest extends TestCase
@@ -255,7 +255,7 @@ final class ColorPaletteTest extends TestCase
         ];
 
         // Act
-        $actualColorPalette = ColorPaletteFacade::getPalette($imagePath);
+        $actualColorPalette = ColorPalette::getPalette($imagePath);
 
         // Assert
         $this->assertEquals($expectedPalette, $actualColorPalette);
@@ -278,7 +278,7 @@ final class ColorPaletteTest extends TestCase
         ];
 
         // Act
-        $actualColors = ColorPaletteFacade::getColor($imagePath);
+        $actualColors = ColorPalette::getColor($imagePath);
         $actualRGB = $actualColors->toRgb();
 
         // Assert

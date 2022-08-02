@@ -1,6 +1,6 @@
 <?php
 
-namespace Kiritokatklian\LaravelColorPalette\Facade;
+namespace Kiritokatklian\LaravelColorPalette\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Facade;
  *
  * @package LaravelColorPalette
  */
-class ColorPaletteFacade extends Facade
+class ColorPalette extends Facade
 {
     /**
      * Get the registered name of the component.
@@ -18,6 +18,6 @@ class ColorPaletteFacade extends Facade
      */
     protected static function getFacadeAccessor(): string
     {
-        return 'ColorPaletteClient';
+        return 'ColorPalette';
     }
 }

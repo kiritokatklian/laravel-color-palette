@@ -28,7 +28,7 @@ class ColorPaletteServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->bind('ColorPaletteClient', function ($app) {
+        $this->app->bind('ColorPalette', function ($app) {
             return new ColorPaletteClient();
         });
     }
