@@ -4,6 +4,7 @@ namespace Kiritokatklian\LaravelColorPalette\Tests\Unit;
 
 use Kiritokatklian\LaravelColorPalette\Color;
 use Kiritokatklian\LaravelColorPalette\Facades\ColorPalette;
+use Kiritokatklian\LaravelColorPalette\ColorSpace;
 use Kiritokatklian\LaravelColorPalette\Tests\TestCase;
 
 final class ColorPaletteTest extends TestCase
@@ -275,6 +276,66 @@ final class ColorPaletteTest extends TestCase
             220,    // Red
             85,     // Green
             80,     // Blue
+
+    /**
+     * Test can generate Display P3 palette from Display P3 image.
+     *
+     * @return void
+     */
+    public function test_can_generate_display_p3_palette_from_display_p3_image(): void
+    {
+        if (!extension_loaded('imagick')) {
+            $this->markTestSkipped('Imagick is required.');
+        }
+
+        // Arrange
+        $imagePath = __DIR__ . '/../images/display-p3.png';
+        $expectedPalette = [
+            '#445ccc',
+            '#3ca45c',
+            '#cc543c',
+            '#e4cc3c',
+            '#b49088',
+        ];
+
+        // Act
+        $actualColorPalette = ColorPalette::getPalette($imagePath, 5, 8);
+
+        // Assert
+        $this->assertEquals($expectedPalette, $actualColorPalette);
+
+        foreach ($actualColorPalette as $actualColor) {
+            $this->assertSame(ColorSpace::DisplayP3, $actualColor->colorSpace);
+        }
+    }
+
+    /**
+     * Test can generate sRGB palette from sRGB image.
+     *
+     * @return void
+     */
+    public function test_can_generate_srgb_palette_from_srgb_image(): void
+    {
+        // Arrange
+        $imagePath = __DIR__ . '/../images/srgb.png';
+        $expectedPalette = [
+            '#445ccc',
+            '#3ca45c',
+            '#cc543c',
+            '#e4cc3c',
+            '#b49088',
+        ];
+
+        // Act
+        $actualColorPalette = ColorPalette::getPalette($imagePath, 5, 8);
+
+        // Assert
+        $this->assertEquals($expectedPalette, $actualColorPalette);
+
+        foreach ($actualColorPalette as $actualColor) {
+            $this->assertSame(ColorSpace::SRGB, $actualColor->colorSpace);
+        }
+    }
         ];
 
         // Act

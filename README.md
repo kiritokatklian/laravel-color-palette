@@ -13,6 +13,7 @@ This Laravel package is extremely useful to grab **dominant color** or a **repre
 
 - [Installation](#installation)
 - [Available Methods](#available-methods)
+- [Color Spaces](#color-spaces)
 - [Test](#test)
 - [License](#license)
 
@@ -96,6 +97,20 @@ Register facade:
     
      - `colorCount` can be 2 to 256. It is the number of colors you want to retrieve for the image.
      - `Quality` & `Area` is same as above.
+
+## Color Spaces
+
+Colors keep the values of the image's pixels. Every color has a `colorSpace` that tells which color space those values are in:
+
+```php
+use Kiritokatklian\LaravelColorPalette\ColorSpace;
+
+$color = ColorPalette::getColor($sourceImage);
+
+$color->colorSpace; // ColorSpace::SRGB, DisplayP3, AdobeRGB, ProPhotoRGB or Rec2020
+```
+
+With Imagick installed, the color space comes from the image's embedded color profile. Images without a profile, or with a profile of any other color space, return `ColorSpace::SRGB`. GD reads no color profiles, so its colors are always `ColorSpace::SRGB`.
 
 ## Test
 

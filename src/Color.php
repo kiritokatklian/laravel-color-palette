@@ -40,13 +40,23 @@ class Color
     public int $a;
 
     /**
+     * The color space of the red, green and blue values.
+     *
+     * @var ColorSpace $colorSpace
+     */
+    public ColorSpace $colorSpace;
+
+    /**
      * Construct new Color.
      *
      * @param \ColorThief\Color|int|int[]|string|null   $color
      * @param bool                                      $short
+     * @param ColorSpace                                $colorSpace
      */
-    public function __construct(\ColorThief\Color|array|int|string|null $color = 0x000000, bool $short = false)
+    public function __construct(\ColorThief\Color|array|int|string|null $color = 0x000000, bool $short = false, ColorSpace $colorSpace = ColorSpace::SRGB)
     {
+        $this->colorSpace = $colorSpace;
+
         if (is_numeric($color) || is_string($color)) {
             if (is_string($color)) {
                 $color = preg_replace('/[^\dA-Fa-f]/', '', $color);
