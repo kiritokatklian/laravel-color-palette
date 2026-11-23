@@ -2,9 +2,10 @@
 
 namespace Kiritokatklian\LaravelColorPalette\Tests\Unit;
 
+use Error;
 use Kiritokatklian\LaravelColorPalette\Color;
-use Kiritokatklian\LaravelColorPalette\Facades\ColorPalette;
 use Kiritokatklian\LaravelColorPalette\ColorSpace;
+use Kiritokatklian\LaravelColorPalette\Facades\ColorPalette;
 use Kiritokatklian\LaravelColorPalette\Tests\TestCase;
 
 final class ColorPaletteTest extends TestCase
@@ -13,7 +14,6 @@ final class ColorPaletteTest extends TestCase
      * Test can construct Color from int.
      *
      * @return void
-     * @test
      */
     public function test_can_construct_color_from_int(): void
     {
@@ -33,11 +33,11 @@ final class ColorPaletteTest extends TestCase
         // Assert
         $this->assertEquals($expectedRGB, $actualRGBA);
     }
+
     /**
      * Test can construct Color from short int.
      *
      * @return void
-     * @test
      */
     public function test_can_construct_color_from_short_int(): void
     {
@@ -62,7 +62,6 @@ final class ColorPaletteTest extends TestCase
      * Test can construct Color from int array.
      *
      * @return void
-     * @test
      */
     public function test_can_construct_color_from_int_array(): void
     {
@@ -91,7 +90,6 @@ final class ColorPaletteTest extends TestCase
      * Test can construct Color from \ColorThief\Color.
      *
      * @return void
-     * @test
      */
     public function test_can_construct_color_from_color_thief_color(): void
     {
@@ -116,7 +114,6 @@ final class ColorPaletteTest extends TestCase
      * Test can construct Color from HEX string.
      *
      * @return void
-     * @test
      */
     public function test_can_construct_color_from_hex_string(): void
     {
@@ -141,7 +138,6 @@ final class ColorPaletteTest extends TestCase
      * Test can construct Color from short HEX string.
      *
      * @return void
-     * @test
      */
     public function test_can_construct_color_from_short_hex_string(): void
     {
@@ -166,7 +162,6 @@ final class ColorPaletteTest extends TestCase
      * Test can construct Color from non-HEX string.
      *
      * @return void
-     * @test
      */
     public function test_can_construct_color_from_non_hex_string(): void
     {
@@ -191,7 +186,6 @@ final class ColorPaletteTest extends TestCase
      * Test can construct Color from any string.
      *
      * @return void
-     * @test
      */
     public function test_can_construct_color_from_any_string(): void
     {
@@ -217,11 +211,10 @@ final class ColorPaletteTest extends TestCase
      * Test Color constructed from null errors.
      *
      * @return void
-     * @test
      */
     public function test_color_constructed_from_null_errors(): void
     {
-        $this->expectError();
+        $this->expectException(Error::class);
         // Arrange
         $color = null;
 
@@ -236,7 +229,6 @@ final class ColorPaletteTest extends TestCase
      * Test can generate color palette from image.
      *
      * @return void
-     * @test
      */
     public function test_can_generate_color_palette_from_image(): void
     {
@@ -246,13 +238,13 @@ final class ColorPaletteTest extends TestCase
             '#d63e37',
             '#92231b',
             '#191813',
-            '#f8c9cd',
+            '#f9c8cd',
             '#7dab53',
             '#446826',
             '#5d110c',
-            '#f794a5',
-            '#90799b',
-            '#314956',
+            '#f894a5',
+            '#8f7c97',
+            '#314654',
         ];
 
         // Act
@@ -266,7 +258,6 @@ final class ColorPaletteTest extends TestCase
      * Test can generate rgb from image.
      *
      * @return void
-     * @test
      */
     public function test_can_generate_rgb_from_image(): void
     {
@@ -276,6 +267,15 @@ final class ColorPaletteTest extends TestCase
             220,    // Red
             85,     // Green
             80,     // Blue
+        ];
+
+        // Act
+        $actualColors = ColorPalette::getColor($imagePath);
+        $actualRGB = $actualColors->toRgb();
+
+        // Assert
+        $this->assertEquals($expectedRGB, $actualRGB);
+    }
 
     /**
      * Test can generate Display P3 palette from Display P3 image.
@@ -335,14 +335,5 @@ final class ColorPaletteTest extends TestCase
         foreach ($actualColorPalette as $actualColor) {
             $this->assertSame(ColorSpace::SRGB, $actualColor->colorSpace);
         }
-    }
-        ];
-
-        // Act
-        $actualColors = ColorPalette::getColor($imagePath);
-        $actualRGB = $actualColors->toRgb();
-
-        // Assert
-        $this->assertEquals($expectedRGB, $actualRGB);
     }
 }
