@@ -59,7 +59,7 @@ class Color
 
         if (is_numeric($color) || is_string($color)) {
             if (is_string($color)) {
-                $color = preg_replace('/[^\dA-Fa-f]/', '', $color);
+                $color = preg_replace('/[^\dA-Fa-f]/', '', $color) ?? '';
                 $color = hexdec($color);
             }
 

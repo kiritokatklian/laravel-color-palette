@@ -1,12 +1,8 @@
-includes:
-    - phpstan-baseline.neon
-
 parameters:
     level: max
     paths:
         - src
     tmpDir: build/phpstan
-    checkMissingIterableValueType: true
     typeAliases:
-        \ColorThief\ColorRGB: 'array{int, int, int}'
-        \ColorThief\RectangularArea: 'array{x?:int, y?:int, w?:int, h?:int}'
+        ColorRGB: 'array{int, int, int}'
+        RectangularArea: 'array{x?:int, y?:int, w?:int, h?:int}'
